@@ -1,0 +1,24 @@
+{
+  "name": "typed",
+  "version": "0.0.0",
+  "description": "Some type guards and other runtime type checking tools for TypeScript.",
+  "homepage": "https://github.com/flatverse/typed#readme",
+  "bugs": {
+    "url": "https://github.com/flatverse/typed/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/flatverse/typed.git"
+  },
+  "license": "ISC",
+  "author": "Cody Thompson",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
