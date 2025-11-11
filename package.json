@@ -1,6 +1,6 @@
 {
   "name": "@flatverse/typed",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Some type guards and other runtime type checking tools for TypeScript.",
   "homepage": "https://github.com/flatverse/typed#readme",
   "bugs": {
@@ -15,6 +15,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
