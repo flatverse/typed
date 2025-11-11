@@ -1,5 +1,5 @@
 {
-  "name": "typed",
+  "name": "@flatverse/typed",
   "version": "0.0.0",
   "description": "Some type guards and other runtime type checking tools for TypeScript.",
   "homepage": "https://github.com/flatverse/typed#readme",
