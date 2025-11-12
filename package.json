@@ -1,6 +1,6 @@
 {
   "name": "@flatverse/typed",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Some type guards and other runtime type checking tools for TypeScript.",
   "homepage": "https://github.com/flatverse/typed#readme",
   "bugs": {
