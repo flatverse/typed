@@ -53,3 +53,15 @@ export function isOfType<T extends string>(type:T, value:any):value is Typed<T> 
 export function isA<TO extends Typed<T>, T extends string = string>(type:T, value:any):value is TO {
     return isOfType(type, value)
 }
+
+/**
+ * Convenience function for making an empty or skeleton typed object.
+ * Kind of like a constructor, but the caller is responsible for adding the properties.
+ * @param type 
+ * @returns 
+ */
+export function makeEmpty<T extends string>(type:T):Typed<T> {
+    return {
+        type
+    }
+}
