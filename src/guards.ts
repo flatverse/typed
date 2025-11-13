@@ -26,11 +26,16 @@ export function assertNotNull<T>(value: T | null): value is T {
 export function assertDef<T extends Prim | object>(
   value: T | null | undefined,
   message?: string,
-): T {
+): value is T {
   if (!isDef(value)) {
     throw new UnexpectedUndefinedError(message);
   }
-  return value;
+  return true;
+}
+
+export function guaranteeDef<T extends Prim|object>(value: T|null|undefined, message?:string):T {
+  assertDef(value, message)
+  return value as T
 }
 
 export function isDef<T>(value: T | undefined | null): value is T {
