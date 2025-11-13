@@ -1,4 +1,4 @@
-import { NullNotAllowedError, UnexpectedUndefinedError } from "./errors";
+import { NullNotAllowedError, UnexpectedTypeError, UnexpectedUndefinedError } from "./errors";
 
 export type Prim = string | number | boolean;
 export type Simple = undefined | Prim | Simple[] | { [ix: string]: Simple };
@@ -143,4 +143,16 @@ export function isObjWithProps<O>(
     }
   }
   return true;
+}
+
+export function assertIs<T>(typeOrGuard: TypeDef<T>, value: any, message?:string): value is T {
+  if (!isOfTypeDef(typeOrGuard, value)) {
+    throw new UnexpectedTypeError(message)
+  }
+  return true
+}
+
+export function guaranteeIs<T>(typeOrGuard: TypeDef<T>, value: any, message?:string): T {
+  assertIs(typeOrGuard, value, message)
+  return value
 }
