@@ -1,5 +1,5 @@
 export interface Nameable {
-  name?: string
+  name?: string|undefined
 }
 
 export type Named<T extends Nameable = Nameable> = T & {readonly name:string}
