@@ -36,7 +36,7 @@ export function isTyped(value:any):value is Typed<string> {
  * @param value the value to check the .type of
  * @returns {boolean} whether or not the value has a "type" property that is set to the value of the parameter "type"
  */
-export function isOfType<T extends string>(type:T, value:any):value is Typed<T> {
+export function isOfType<T extends Typed<string> = Typed<string>>(type:TOf<T>, value:any):value is T {
     return isTyped(value) && value.type === type
 }
 
@@ -46,7 +46,7 @@ export function isOfType<T extends string>(type:T, value:any):value is Typed<T> 
  * @param value 
  * @returns 
  */
-export function assertOfType<T extends string>(type:T, value:any):value is Typed<T> {
+export function assertOfType<T extends Typed<string> = Typed<string>>(type:TOf<T>, value:any):value is T {
     if (!isOfType(type, value)) {
         throw new UnexpectedTypeError(`expected: ${type}, received: ${value?.type}`)
     }
@@ -61,24 +61,9 @@ export function assertOfType<T extends string>(type:T, value:any):value is Typed
  * @param value The value to assert is of type T before returning
  * @returns The value (cast as T)
  */
-export function guaranteeOfType<T extends string>(type:T, value:any):T {
+export function guaranteeOfType<T extends Typed<string> = Typed<string>>(type:TOf<T>, value:any):T {
     assertOfType(type, value)
     return value
-}
-
-/**
- * Ensures the the given value implements Typed and the value of it's .type property matches the "type" value passed in.
- * Casts/Narrows the type to extend "TO".
- * Does NOT do a deep check to verify that the structure of "value" actually matches that of TO. Only that
- * value.type === type.
- *
- * Simply calls isOfType internally, but with the convenience of narrowing/casting the type on the callers behalf.
- * @param type the type-name to verify that value has
- * @param value the value to check the .type of
- * @returns {boolean} whether or not the value has a "type" property that is set to the value of the parameter "type"
- */
-export function isA<TO extends Typed<T>, T extends string = string>(type:T, value:any):value is TO {
-    return isOfType(type, value)
 }
 
 /**
