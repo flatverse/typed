@@ -1,7 +1,9 @@
 import { NullNotAllowedError, UnexpectedTypeError, UnexpectedUndefinedError } from "./errors";
 
 export type Prim = string | number | boolean;
-export type Simple = undefined | Prim | Simple[] | { [ix: string]: Simple };
+export type SimpleArray = Simple[]
+export type SimpleObject = { [ix: string]: Simple }
+export type Simple = undefined | Prim | SimpleArray | SimpleObject;
 
 export type PrimMap = {
   string: string;
