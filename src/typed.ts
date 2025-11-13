@@ -1,3 +1,4 @@
+import { UnexpectedTypeError } from "./errors"
 import { isObjWithProp, isStr } from "./guards"
 
 /**
@@ -37,6 +38,19 @@ export function isTyped(value:any):value is Typed<string> {
  */
 export function isOfType<T extends string>(type:T, value:any):value is Typed<T> {
     return isTyped(value) && value.type === type
+}
+
+/**
+ * Assert that the given value's type field matches what is passed in
+ * @param type 
+ * @param value 
+ * @returns 
+ */
+export function assertOfType<T extends string>(type:T, value:any):value is Typed<T> {
+    if (!isOfType(type, value)) {
+        throw new UnexpectedTypeError(`expected: ${type}, received: ${value?.type}`)
+    }
+    return true
 }
 
 /**
