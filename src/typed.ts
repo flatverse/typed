@@ -72,8 +72,9 @@ export function guaranteeOfType<T extends Typed<string> = Typed<string>>(type:TO
  * @param type 
  * @returns 
  */
-export function makeEmpty<T extends string>(type:T):Typed<T> {
+export function newTyped<T extends string, P extends {}>(type:T, properties:P = {} as P):Typed<T>&P {
     return {
-        type
+        type,
+        ...properties
     }
 }
