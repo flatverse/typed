@@ -54,6 +54,19 @@ export function assertOfType<T extends string>(type:T, value:any):value is Typed
 }
 
 /**
+ * Convenience function for "casting" values to a given Typed implementer.
+ * Throws an error if the given does not has a type field matching the given `type`
+ * returns the value (cast as T) otherwise
+ * @param {string} type The type string the given value should be
+ * @param value The value to assert is of type T before returning
+ * @returns The value (cast as T)
+ */
+export function guaranteeOfType<T extends string>(type:T, value:any):T {
+    assertOfType(type, value)
+    return value
+}
+
+/**
  * Ensures the the given value implements Typed and the value of it's .type property matches the "type" value passed in.
  * Casts/Narrows the type to extend "TO".
  * Does NOT do a deep check to verify that the structure of "value" actually matches that of TO. Only that
