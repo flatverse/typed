@@ -10,7 +10,11 @@ export type PrimMap = {
   number: number;
   boolean: boolean;
 };
-export const RuntimePrimMap: Record<keyof PrimMap, keyof PrimMap> = {
+export const RuntimePrimMap = {
+  string: "string",
+  number: "number",
+  boolean: "boolean",
+} as {
   string: "string",
   number: "number",
   boolean: "boolean",
